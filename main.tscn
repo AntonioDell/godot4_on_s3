@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://y47sjyg345fg"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_grfax"]
+
+[sub_resource type="Gradient" id="Gradient_mh4ho"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m61pr"]
+gradient = SubResource("Gradient_mh4ho")
+width = 256
+height = 256
+
+[node name="Main" type="Node"]
+script = ExtResource("1_grfax")
+
+[node name="ImageFromBucket" type="Sprite2D" parent="."]
+position = Vector2(411, 289)
+texture = SubResource("GradientTexture2D_m61pr")
+
+[node name="RandomizeImageBtn" type="Button" parent="."]
+offset_left = 25.0
+offset_top = 86.0
+offset_right = 171.0
+offset_bottom = 117.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Randomize Image"
+
+[connection signal="pressed" from="RandomizeImageBtn" to="." method="_on_randomize_image_btn_pressed"]

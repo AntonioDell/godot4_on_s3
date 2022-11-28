@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bchnt8oq1uuxt"]
+
+[ext_resource type="Script" path="res://data_repository.gd" id="1_xyluf"]
+
+[node name="DataRepository" type="Node"]
+script = ExtResource("1_xyluf")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
