@@ -173,6 +173,7 @@
     <script type='text/javascript'>//<![CDATA[
 
         const GODOT_CONFIG = $GODOT_CONFIG;
+        GODOT_CONFIG.args.push("--data-bucket-url=$DATA_BUCKET_URL"); // DATA_BUCKET_URL is replaced by github action with the provided secrets.S3_DATA
         var engine = new Engine(GODOT_CONFIG);
 
         (function () {

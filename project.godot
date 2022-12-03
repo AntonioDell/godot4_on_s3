@@ -22,7 +22,7 @@ DataRepository="*res://data_repository.tscn"
 
 [editor]
 
-run/main_run_args="--data-bucket-url=https://s3.<s3-bucket-region>.amazonaws.com/<your-bucket>"
+run/main_run_args="--data-bucket-url=https://s3.eu-central-1.amazonaws.com/part2.godot4-on-s3.xyz"
 
 [rendering]
 
