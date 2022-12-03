@@ -52,11 +52,17 @@ jobs:
           region: ${{ secrets.S3_REGION }}
           access_key: ${{ secrets.S3_ACCESS_KEY }}
           secret_key: ${{ secrets.S3_SECRET_KEY }}
-      - name: delete contents of website bucket
-        run: s3cmd del -r --force ${{ secrets.WEB_S3CMD_URI }}
-      - name: upload website files
+      - name: delete game files from bucket
+        run: |
+          s3cmd --recursive ls ${{ secrets.WEB_S3CMD_URI }} | 
+          awk '{ print $4 }' | 
+          grep "index.*" | 
+          xargs s3cmd del
+      - name: delete static folder from bucket
+        run: s3cmd del -r --force ${{ secrets.WEB_S3CMD_URI }}/static
+      - name: upload game files
         run: s3cmd sync --recursive web/* ${{ secrets.WEB_S3CMD_URI }}
-      - name: replace remote static folder
+      - name: upload static folder
         run: |
           s3cmd sync --recursive ${{ github.workspace }}/static ${{ secrets.WEB_S3CMD_URI }}
       - name: invalidate aws distribution
